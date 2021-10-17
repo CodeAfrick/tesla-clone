@@ -1,20 +1,20 @@
 
 import React from 'react'
 import styled from 'styled-components'
-function Section() {
+function Section({title,description,backgroundImg,leftBtnText,rightBtnText}) {
     return (
-        <Wrap>
+        <Wrap bgImage ={backgroundImg}>
             <ItemText>
-                <h1>Model S</h1>
-                <p>Order  Online for Touchless Delivery</p>
+                <h1>{title}</h1>
+                <p>{description}</p>
             </ItemText>
             <Buttons>
             <ButtonGroup>
                 <LeftButton>
-                    Custom Order
+                   {leftBtnText}
                 </LeftButton>
                 <RightButton>
-                    Existing Inventory
+                    {rightBtnText}
                 </RightButton>
             </ButtonGroup>
             <DownArrow src="/images/down-arrow.svg" />
@@ -31,7 +31,7 @@ export default Section
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-    background-image:url('/images/model-s.jpg');
+    background-image: ${props => `url('images/${props.bgImage}')`};
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -46,6 +46,9 @@ export default Section
     const ButtonGroup = styled.div`
     display:flex; 
     margin-button:30px;
+    @media(max-width:768px){
+        flex-direction:column;
+    }
 
     `
     const LeftButton = styled.div`
@@ -64,10 +67,13 @@ export default Section
     margin:8px;
     `
     const RightButton = styled(LeftButton)`
+    background-color:white;
+    opacity: 0.62;
+    color:black;
     `
     const DownArrow =styled.img`
-    margin-top:20px;
     height:40px;
+    overflow-x:hidden;
     animation: animateDown infinite 1.5s;
     `
     const Buttons = styled.div`
