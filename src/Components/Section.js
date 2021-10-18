@@ -1,23 +1,26 @@
 
 import React from 'react'
 import styled from 'styled-components'
-function Section({title,description,backgroundImg,leftBtnText,rightBtnText}) {
+function Section({ title, description, backgroundImg, leftBtnText, rightBtnText }) {
     return (
-        <Wrap bgImage ={backgroundImg}>
+        <Wrap bgImage={backgroundImg}>
             <ItemText>
                 <h1>{title}</h1>
                 <p>{description}</p>
             </ItemText>
             <Buttons>
-            <ButtonGroup>
-                <LeftButton>
-                   {leftBtnText}
-                </LeftButton>
-                <RightButton>
-                    {rightBtnText}
-                </RightButton>
-            </ButtonGroup>
-            <DownArrow src="/images/down-arrow.svg" />
+                <ButtonGroup>
+                    <LeftButton>
+                        {leftBtnText}
+                    </LeftButton>
+
+                    {rightBtnText &&
+                        <RightButton>
+                            {rightBtnText}
+                        </RightButton>
+                    }
+                </ButtonGroup>
+                <DownArrow src="/images/down-arrow.svg" />
             </Buttons>
 
         </Wrap>
@@ -25,7 +28,7 @@ function Section({title,description,backgroundImg,leftBtnText,rightBtnText}) {
 }
 
 export default Section
-    const Wrap = styled.div
+const Wrap = styled.div
     `width:100vw;
     height:100vh;
     background-size:cover;
@@ -38,12 +41,12 @@ export default Section
     align-items:center;
     `
 
-    const ItemText = styled.div`
+const ItemText = styled.div`
     padding-top:15vh;
     text-align:center;
     `
 
-    const ButtonGroup = styled.div`
+const ButtonGroup = styled.div`
     display:flex; 
     margin-button:30px;
     @media(max-width:768px){
@@ -51,7 +54,7 @@ export default Section
     }
 
     `
-    const LeftButton = styled.div`
+const LeftButton = styled.div`
     background-color: rgba(23,26,32,0.8);
     height:40px;
     width:256px;
@@ -66,15 +69,15 @@ export default Section
     cursor: pointer;
     margin:8px;
     `
-    const RightButton = styled(LeftButton)`
+const RightButton = styled(LeftButton)`
     background-color:white;
     opacity: 0.62;
     color:black;
     `
-    const DownArrow =styled.img`
+const DownArrow = styled.img`
     height:40px;
     overflow-x:hidden;
     animation: animateDown infinite 1.5s;
     `
-    const Buttons = styled.div`
+const Buttons = styled.div`
     `
